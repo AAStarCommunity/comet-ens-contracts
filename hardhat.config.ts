@@ -16,7 +16,7 @@ if (process.env.REMOTE_GATEWAY) {
   devGatewayUrl =
     `${process.env.REMOTE_GATEWAY}/{sender}/{data}.json`;
 }
-console.log('devGatewayUrl', devGatewayUrl);
+console.log('real_accounts', real_accounts);
 
 
 const config: HardhatUserConfig = {
@@ -27,10 +27,18 @@ const config: HardhatUserConfig = {
       // @ts-ignore
       gatewayUrl: devGatewayUrl,
     },
-    opSep: {
-      url: `https://ropsten.infura.io/v3/${process.env.INFURA_ID}`,
+    sepolia: {
+      url: `https://sepolia.infura.io/v3/${'9ebd8833fbb643bb9edb66487d06f546' || process.env.INFURA_ID}`,
       tags: ['test', 'demo'],
-      chainId: 3,
+      chainId: 11155111,
+      accounts: real_accounts,
+      // @ts-ignore
+      gatewayUrl,
+    },
+    opSepolia: {
+      url: `https://optimism-sepolia.infura.io/v3/${'9ebd8833fbb643bb9edb66487d06f546' || process.env.INFURA_ID}`,
+      tags: ['test', 'demo'],
+      chainId: 11155420,
       accounts: real_accounts,
       // @ts-ignore
       gatewayUrl,
@@ -65,11 +73,11 @@ const config: HardhatUserConfig = {
     },
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
+    apiKey: 'Q9DZBIZYGE36XNX5UFQR64S1X1H34YUZY4' || process.env.ETHERSCAN_API_KEY,
   },
   namedAccounts: {
     signer: {
-      default: '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266',
+      default: '0x9AA1F980345586B816997a19af045552Aa085AdF',
     },
     deployer: {
       default: 1,
