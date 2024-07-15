@@ -9,6 +9,7 @@ let real_accounts = undefined;
 if (process.env.DEPLOYER_KEY && process.env.OWNER_KEY) {
   real_accounts = [process.env.OWNER_KEY, process.env.DEPLOYER_KEY];
 }
+
 const gatewayUrl = 'https://comet-ens-serve.onrender.com/{sender}/{data}.json';
 
 let devGatewayUrl = 'http://localhost:8080/{sender}/{data}.json';
@@ -16,8 +17,6 @@ if (process.env.REMOTE_GATEWAY) {
   devGatewayUrl =
     `${process.env.REMOTE_GATEWAY}/{sender}/{data}.json`;
 }
-console.log('real_accounts', real_accounts);
-
 
 const config: HardhatUserConfig = {
   solidity: "0.8.10",
@@ -77,7 +76,7 @@ const config: HardhatUserConfig = {
   },
   namedAccounts: {
     signer: {
-      default: '0x9AA1F980345586B816997a19af045552Aa085AdF',
+      default: '0xC9A6a1eBfB39BDd16c48f105c4b2A653E30acfD8',
     },
     deployer: {
       default: 1,

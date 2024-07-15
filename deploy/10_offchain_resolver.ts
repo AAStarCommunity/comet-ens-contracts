@@ -8,7 +8,6 @@ const func: DeployFunction = async function ({ getNamedAccounts, deployments, ne
     if (!network.config?.gatewayUrl) {
         throw ("gatewayurl is missing on hardhat.config.ts");
     }
-    console.log(deployer, signer);
 
     await deploy('OffchainResolver', {
         from: deployer,
